@@ -5,7 +5,7 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
-  CartesianGrid
+  CartesianGrid,
 } from "recharts";
 
 import styles from "./PortfolioChart.module.css";
@@ -22,7 +22,17 @@ function PortfolioChart({ data }) {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Bar dataKey="price" fill="#8884d8" />
+          <Bar
+            dataKey="price"
+            fill="var(--color-accent)"
+            radius={[6, 6, 0, 0]}
+            onMouseOver={(data, index, e) => {
+              e.target.style.fill = "#60a5fa"; // lighter blue
+            }}
+            onMouseOut={(data, index, e) => {
+              e.target.style.fill = "var(--color-accent)";
+            }}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>

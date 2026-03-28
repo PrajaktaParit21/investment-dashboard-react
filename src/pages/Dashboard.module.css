@@ -72,3 +72,50 @@
 .summaryCard h2 {
   margin: 5px 0 0;
 }
+.controls {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+/* Sort wrapper */
+.sortWrapper {
+  position: relative;
+}
+
+/* Button */
+.sortButton {
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-card);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+/* Dropdown */
+.sortDropdown {
+  position: absolute;
+  top: 110%;
+  right: 0;
+
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  width: 180px;
+  box-shadow: var(--shadow-card);
+  z-index: 10;
+}
+
+/* Items */
+.sortItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sortItem:hover {
+  background-color: var(--color-bg-secondary);
+}
