@@ -32,61 +32,67 @@ function Dashboard() {
   if (error) {
     return (
       <>
-       <Header />
-      <div className={styles.box}>
-        <div className={styles.rowContainer}>
-          <span>{error}</span>
-          <button onClick={refetch} disabled={isLoading}>
-            {isLoading ? "Retrying..." : "Retry"}
-          </button>
+        <Header />
+        <div className={styles.box}>
+          <div className={styles.rowContainer}>
+            <span>{error}</span>
+            <button onClick={refetch} disabled={isLoading}>
+              {isLoading ? "Retrying..." : "Retry"}
+            </button>
+          </div>
         </div>
-      </div>
       </>
     );
   }
 
   const changeClass = avgChange >= 0 ? "profit" : "loss";
   return (
-    <div className={styles.box}>
-      {isLoading ? (
-        <p>Stocks are Loading...</p>
-      ) : stocks.length > 0 ? (
-        <div className={styles.searchList}>
-          <input
-            className={styles.searchInput}
-            type="text"
-            placeholder="Search for stock name"
-            value={searchInput}
-            onChange={(e) => handleSearchChange(e.target.value)}
-          />
-          <div className={styles.columnContainer}>
-            <p>
-              <strong>Total Investment</strong> ₹
-              {totalInvestment.toLocaleString()}
-            </p>
-            <p>
-              <strong>Net change</strong>{" "}
-              <span className={changeClass}>{avgChange.toFixed(2)}%</span>
-            </p>
+    <>
+      <Header />
+
+      <div className={styles.box}>
+        {isLoading ? (
+          <p>Stocks are Loading...</p>
+        ) : stocks.length > 0 ? (
+          <div className={styles.searchList}>
+            <input
+              className={styles.searchInput}
+              type="text"
+              placeholder="Search for stock name"
+              value={searchInput}
+              onChange={(e) => handleSearchChange(e.target.value)}
+            />
+            <div className={styles.columnContainer}>
+              <div className={styles.summaryCard}>
+                <p>Total Investment</p>
+                <h2>₹{totalInvestment.toLocaleString()}</h2>
+              </div>
+
+              <div className={styles.summaryCard}>
+                <p>Net Change</p>
+                <h2 className={changeClass}>{avgChange.toFixed(2)}%</h2>
+              </div>
+            </div>
+            <PortfolioChart data={filteredStocks} />
+
+            <div className={styles.rowContainer}>
+              {filteredStocks.length > 0 ? (
+                filteredStocks.map((stock) => (
+                  <StockCard key={stock.id} {...stock} />
+                ))
+              ) : (
+                <p>
+                  No stocks found for name "<strong>{searchResult}</strong>".
+                  Please ensure to add correct name
+                </p>
+              )}
+            </div>
           </div>
-          <div className={styles.rowContainer}>
-            {filteredStocks.length > 0 ? (
-              filteredStocks.map((stock) => (
-                <StockCard key={stock.id} {...stock} />
-              ))
-            ) : (
-              <p>
-                No stocks found for name "<strong>{searchResult}</strong>".
-                Please ensure to add correct name
-              </p>
-            )}
-          </div>
-          <PortfolioChart data={filteredStocks} />
-        </div>
-      ) : (
-        <p>Currently no stocks available</p>
-      )}
-    </div>
+        ) : (
+          <p>Currently no stocks available</p>
+        )}
+      </div>
+    </>
   );
 }
 export default Dashboard;

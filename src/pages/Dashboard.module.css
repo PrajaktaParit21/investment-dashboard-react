@@ -1,32 +1,74 @@
-.container{
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-    align-items: center;
-}
-.searchList{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.box {
+  margin: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-secondary);
+  box-shadow: var(--shadow-card);
 }
 
-.box{
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid var(--primary-border);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-radius: 12px;
-    box-shadow: rgba(176, 196, 216, 0.35) 0px 5px 15px;
+/* Search + layout */
+.searchList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
 }
-.rowContainer{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+
+/* Grid for stock cards */
+.rowContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--spacing-md);
 }
-.columnContainer{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+
+/* Summary cards container */
+.columnContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+/* Search input */
+.searchInput {
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-card);
+  color: var(--color-text-primary);
+  outline: none;
+}
+
+.searchInput:focus {
+  border-color: var(--color-accent);
+}
+
+/* Error row */
+.rowContainer span {
+  color: var(--color-loss);
+}
+.summaryCard {
+  padding: var(--spacing-md);
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.summaryCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.summaryCard p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+.summaryCard h2 {
+  margin: 5px 0 0;
 }
