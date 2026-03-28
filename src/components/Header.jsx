@@ -13,7 +13,7 @@ function Header() {
   }
 
   return (
-    <div>
+    <div style={{display:'flex',margin:'var(--spacing-lg)',gap:'var(--spacing-lg)'}}>
       <h1>Investment Dashboard</h1>
       <button onClick={toggleTheme}>
         {isLight ? "🌙 Dark" : "☀️ Light"}

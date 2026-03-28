@@ -2,46 +2,15 @@ import StockCard from "../components/StockCard";
 import styles from "./Dashboard.module.css";
 import { useStocks } from "../hooks/useStocks";
 import { useDebounce } from "../hooks/useDebounce";
-import { useMemo, useState, useRef, useEffect } from "react";
+import { useMemo, useState } from "react";
 import PortfolioChart from "../components/PortfolioChart";
 import Header from "../components/Header";
+import SortPanel from "../components/SortPanel";
 
 function Dashboard() {
   const { error, isLoading, stocks, refetch } = useStocks();
   const { searchInput, searchResult, handleSearchChange } = useDebounce();
   const [sortBy, setSortBy] = useState("price-high");
-  const [showSort, setShowSort] = useState(false);
-  const dropdownRef = useRef(null);
-
-  useEffect(() => {
-  function handleClickOutside(event) {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(event.target)
-    ) {
-      setShowSort(false);
-    }
-  }
-  function handleEsc(e) {
-    if (e.key === "Escape") {
-      setShowSort(false);
-    }
-  }
-
-  document.addEventListener("click", handleClickOutside);
- document.addEventListener("keydown", handleEsc);
-  return () => {
-    document.removeEventListener("click", handleClickOutside);
-     document.removeEventListener("keydown", handleEsc);
-  };
-}, []);
-
-  const options = [
-    { label: "Price: High → Low", value: "price-high" },
-    { label: "Price: Low → High", value: "price-low" },
-    { label: "Top Gainers", value: "change-high" },
-    { label: "Top Losers", value: "change-low" },
-  ];
 
   const filteredStocks = useMemo(() => {
     if (!searchResult) return stocks;
@@ -114,32 +83,7 @@ function Dashboard() {
                 onChange={(e) => handleSearchChange(e.target.value)}
               />
 
-              <div className={styles.sortWrapper} ref={dropdownRef}>
-                <button
-                  className={styles.sortButton}
-                  onClick={() => setShowSort((prev) => !prev)}
-                >
-                  Sort ▾
-                </button>
-
-                {showSort && (
-                  <div className={styles.sortDropdown}>
-                    {options.map((opt) => (
-                      <div
-                        key={opt.value}
-                        className={styles.sortItem}
-                        onClick={() => {
-                          setSortBy(opt.value);
-                          setShowSort(false);
-                        }}
-                      >
-                        <span>{opt.label}</span>
-                        {sortBy === opt.value && <span>✓</span>}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <SortPanel sortBy={sortBy} setSortBy={setSortBy} />
             </div>
             <div className={styles.columnContainer}>
               <div className={styles.summaryCard}>
@@ -152,10 +96,10 @@ function Dashboard() {
                 <h2 className={changeClass}>{avgChange.toFixed(2)}%</h2>
               </div>
             </div>
-            <PortfolioChart data={filteredStocks} />
+            <PortfolioChart data={sortedStocks} />
 
             <div className={styles.rowContainer}>
-              {filteredStocks.length > 0 ? (
+              {sortedStocks.length > 0 ? (
                 sortedStocks.map((stock) => (
                   <StockCard key={stock.id} {...stock} />
                 ))
