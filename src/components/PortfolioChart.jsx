@@ -21,7 +21,16 @@ function PortfolioChart({ data }) {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
-          <Tooltip />
+          <Tooltip
+            formatter={(value) => `₹${value}`}
+            cursor={{ fill: "rgba(59, 130, 246, 0.15)" }}
+            contentStyle={{
+              backgroundColor: "var(--color-bg-card)",
+              border: "1px solid var(--color-border)",
+              borderRadius: "8px",
+              color: "var(--color-text-primary)",
+            }}
+          />
           <Bar
             dataKey="price"
             fill="var(--color-accent)"
