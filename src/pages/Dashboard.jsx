@@ -2,7 +2,7 @@ import StockCard from "../components/StockCard";
 import styles from "./Dashboard.module.css";
 import { useStocks } from "../hooks/useStocks";
 import { useDebounce } from "../hooks/useDebounce";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import PortfolioChart from "../components/PortfolioChart";
 import Header from "../components/Header";
 
@@ -11,6 +11,30 @@ function Dashboard() {
   const { searchInput, searchResult, handleSearchChange } = useDebounce();
   const [sortBy, setSortBy] = useState("price-high");
   const [showSort, setShowSort] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+  function handleClickOutside(event) {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target)
+    ) {
+      setShowSort(false);
+    }
+  }
+  function handleEsc(e) {
+    if (e.key === "Escape") {
+      setShowSort(false);
+    }
+  }
+
+  document.addEventListener("click", handleClickOutside);
+ document.addEventListener("keydown", handleEsc);
+  return () => {
+    document.removeEventListener("click", handleClickOutside);
+     document.removeEventListener("keydown", handleEsc);
+  };
+}, []);
 
   const options = [
     { label: "Price: High → Low", value: "price-high" },
@@ -90,7 +114,7 @@ function Dashboard() {
                 onChange={(e) => handleSearchChange(e.target.value)}
               />
 
-              <div className={styles.sortWrapper}>
+              <div className={styles.sortWrapper} ref={dropdownRef}>
                 <button
                   className={styles.sortButton}
                   onClick={() => setShowSort((prev) => !prev)}

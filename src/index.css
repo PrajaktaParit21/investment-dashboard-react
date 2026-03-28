@@ -71,9 +71,24 @@ button {
 
 button:hover {
   background-color: var(--color-accent-hover);
+  color: white;
 }
 
 button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* Light theme */
+body.light {
+  --color-bg-primary: #f8fafc;
+  --color-bg-secondary: #ffffff;
+  --color-bg-card: #ffffff;
+
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+
+  --color-accent: #2563eb;
+
+  --color-border: #e2e8f0;
 }
