@@ -1,0 +1,32 @@
+.container{
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
+}
+.searchList{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.box{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid var(--primary-border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 12px;
+    box-shadow: rgba(176, 196, 216, 0.35) 0px 5px 15px;
+}
+.rowContainer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.columnContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

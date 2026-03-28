@@ -1,0 +1,61 @@
+@import "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css";
+@import "https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap";
+*{
+    margin: 0;
+    padding: 0;
+}
+:root {
+  /* 🌑 Backgrounds */
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-card: #1e293b;
+
+  /* 📝 Text */
+  --color-text-primary: #e2e8f0;
+  --color-text-secondary: #94a3b8;
+
+  /* 🎯 Accent */
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+
+  /* 📈 Status */
+  --color-profit: #22c55e;
+  --color-loss: #ef4444;
+
+  /* 🧱 Borders */
+  --color-border: #334155;
+
+  /* 🌫️ Shadows */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  /* 📏 Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+
+  /* 🔘 Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+:root{
+    --primary-bg: lavender;
+    --primary-border: rgb(34, 83, 144);
+}
+
+
+.profit {
+  color: var(--color-profit);
+}
+
+.loss {
+  color: var(--color-loss);
+}
