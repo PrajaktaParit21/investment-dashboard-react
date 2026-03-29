@@ -40,11 +40,11 @@ Advanced charts
 User authentication
 
 ## ScreenShots
-![Home Page](src\assets\home-page.png)
-![Dark mode](src\assets\home-page-dark.png)
-![Stock Details page](src\assets\stock-details.png)
-![Control Panel](src\assets\control-panel.png)
-![About](src\assets\about.png)
+![Home Page](src/assets/home-page.png)
+![Dark mode](src/assets/home-page-dark.png)
+![Stock Details page](src/assets/stock-details.png)
+![Control Panel](src/assets/control-panel.png)
+![About](src/assets/about.png)
 
 ## ⚙️ Installation
 ```bash
