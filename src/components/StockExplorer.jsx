@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import StockCard from "../components/StockCard";
+import StockCard from "./StockCard";
 import styles from "./StockExplorer.module.css";
 
 function StockExplorer({ addStock, removeStock, mockStocks }) {
@@ -37,7 +37,9 @@ function StockExplorer({ addStock, removeStock, mockStocks }) {
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.title}>Explore Stocks </h2>
-      <span>Visible Stocks: ({visibleStocks.length}/{mockStocks.length}) </span>
+      <span>
+        Visible Stocks: ({visibleStocks.length}/{mockStocks.length}){" "}
+      </span>
 
       <div className={styles.list}>
         {visibleStocks.map((stock) => (

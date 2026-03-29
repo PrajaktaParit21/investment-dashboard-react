@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import styles from "../pages/Dashboard.module.css";
+import styles from "../components/Dashboard.module.css";
 
 function SortPanel({ sortBy, setSortBy }) {
   const [showSort, setShowSort] = useState(false);

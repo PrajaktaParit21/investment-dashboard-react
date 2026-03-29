@@ -1,12 +1,11 @@
-import StockCard from "../components/StockCard";
+import StockCard from "./StockCard";
 import styles from "./Dashboard.module.css";
 import { useDebounce } from "../hooks/useDebounce";
 import { useMemo, useState } from "react";
-import PortfolioChart from "../components/PortfolioChart";
-import SortPanel from "../components/SortPanel";
+import PortfolioChart from "./PortfolioChart";
+import SortPanel from "./SortPanel";
 
 function Dashboard({ error, isLoading, stocks, refetch, onAdd, onRemove }) {
-  
   const { searchInput, searchResult, handleSearchChange } = useDebounce();
   const [sortBy, setSortBy] = useState("price-high");
 
