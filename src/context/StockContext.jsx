@@ -19,6 +19,7 @@ export function StockProvider({ children }) {
         return prev;
       }
       setExploreStocks((prev) => prev.filter((s) => s.id != stock.id));
+      showToast(`✅ ${stock.name} Added Successfully `);
       return [...prev, stock];
     });
   }
@@ -26,6 +27,7 @@ export function StockProvider({ children }) {
   function removeStock(stock) {
     setSelectedStocks((prev) => prev.filter((s) => s.id != stock.id));
     setExploreStocks((prev) => [stock, ...prev]);
+    showToast(`✅ ${stock.name} Removed Successfully `);
   }
 
   return (
