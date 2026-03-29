@@ -16,8 +16,8 @@ function App() {
   function addStock(stock) {
     setStocks((prev) => {
       if (prev.length >= 5) {
-        
-        showToast("You can only select up to 5 stocks "+ stock.name);
+
+        showToast("⚠️ You can only select up to 5 stocks!");
         return prev;
       }
       setExploreStocks(prev => prev.filter(s => s.id != stock.id))

@@ -17,6 +17,7 @@
   /* 🎯 Accent */
   --color-accent: #3b82f6;
   --color-accent-hover: #2563eb;
+  --color-accent-text: white;
 
   /* 📈 Status */
   --color-profit: #22c55e;
