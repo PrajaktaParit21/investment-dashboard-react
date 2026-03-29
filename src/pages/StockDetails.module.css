@@ -1,0 +1,35 @@
+.container {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.backBtn {
+  width: fit-content;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+}
+
+.card {
+  border: 1px solid var(--primary-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  background-color: var(--primary-bg);
+  box-shadow: var(--shadow-card);
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.chart {
+  height: 300px;
+}

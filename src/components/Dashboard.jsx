@@ -4,17 +4,19 @@ import { useDebounce } from "../hooks/useDebounce";
 import { useMemo, useState } from "react";
 import PortfolioChart from "./PortfolioChart";
 import SortPanel from "./SortPanel";
+import { useGlobals } from "../context/StockContext.jsx";
 
-function Dashboard({ error, isLoading, stocks, refetch, onAdd, onRemove }) {
+function Dashboard() {
+  const {error, isLoading, selectedStocks, refetch} = useGlobals()
   const { searchInput, searchResult, handleSearchChange } = useDebounce();
   const [sortBy, setSortBy] = useState("price-high");
 
   const filteredStocks = useMemo(() => {
-    if (!searchResult) return stocks;
-    return stocks.filter((stock) =>
+    if (!searchResult) return selectedStocks;
+    return selectedStocks.filter((stock) =>
       stock.name.toLowerCase().includes(searchResult.toLowerCase()),
     );
-  }, [stocks, searchResult]);
+  }, [selectedStocks, searchResult]);
 
   let { totalInvestment, avgChange } = useMemo(() => {
     let totalInvestment = 0;
@@ -66,7 +68,7 @@ function Dashboard({ error, isLoading, stocks, refetch, onAdd, onRemove }) {
       <div className={styles.box}>
         {isLoading ? (
           <p>Stocks are Loading...</p>
-        ) : stocks.length > 0 ? (
+        ) : selectedStocks.length > 0 ? (
           <div className={styles.searchList}>
             <div className={styles.controls}>
               <input
@@ -101,8 +103,6 @@ function Dashboard({ error, isLoading, stocks, refetch, onAdd, onRemove }) {
                     key={stock.id}
                     stock={stock}
                     isSelected={true}
-                    onAdd={onAdd}
-                    onRemove={onRemove}
                   />
                 ))
               ) : (

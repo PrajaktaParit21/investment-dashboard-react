@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import StockCard from "./StockCard";
 import styles from "./StockExplorer.module.css";
+import { useGlobals } from "../context/StockContext.jsx";
 
-function StockExplorer({ addStock, removeStock, mockStocks }) {
+function StockExplorer() {
+  const { mockStocks } = useGlobals();
   const loaderRef = useRef(null);
   const isLoadingRef = useRef(false);
   const [visibleCount, setVisibleCount] = useState(10);
@@ -43,13 +45,7 @@ function StockExplorer({ addStock, removeStock, mockStocks }) {
 
       <div className={styles.list}>
         {visibleStocks.map((stock) => (
-          <StockCard
-            key={stock.id}
-            stock={stock}
-            isSelected={false}
-            onAdd={addStock}
-            onRemove={removeStock}
-          />
+          <StockCard key={stock.id} stock={stock} isSelected={false} />
         ))}
 
         {visibleCount < mockStocks.length && (
