@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "../pages/Dashboard.module.css";
 
-function ControlPanel({  sortBy, setSortBy }) {
-    const [showSort, setShowSort] = useState(false);
+function SortPanel({ sortBy, setSortBy }) {
+  const [showSort, setShowSort] = useState(false);
   const dropdownRef = useRef(null);
   const options = [
     { label: "Price: High → Low", value: "price-high" },
@@ -10,7 +10,7 @@ function ControlPanel({  sortBy, setSortBy }) {
     { label: "Top Gainers", value: "change-high" },
     { label: "Top Losers", value: "change-low" },
   ];
-  
+
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -61,4 +61,4 @@ function ControlPanel({  sortBy, setSortBy }) {
   );
 }
 
-export default ControlPanel;
+export default SortPanel;

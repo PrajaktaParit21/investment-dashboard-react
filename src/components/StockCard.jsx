@@ -1,6 +1,7 @@
 import styles from "./StockCard.module.css";
 
-function StockCard({ name, price, change }) {
+function StockCard({ stock, isSelected, onAdd, onRemove }) {
+  const { name, price, change } = stock;
   const changeClass = change >= 0 ? styles.profit : styles.loss;
 
   return (
@@ -16,6 +17,15 @@ function StockCard({ name, price, change }) {
           {change}%
         </p>
       </div>
+      {isSelected ? (
+        <button className={styles.removeBtn} onClick={() => onRemove(stock)}>
+          Remove
+        </button>
+      ) : (
+        <button className={styles.addBtn} onClick={() => onAdd(stock)}>
+          Add
+        </button>
+      )}
     </div>
   );
 }

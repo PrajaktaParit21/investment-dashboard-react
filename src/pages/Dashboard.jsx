@@ -1,14 +1,12 @@
 import StockCard from "../components/StockCard";
 import styles from "./Dashboard.module.css";
-import { useStocks } from "../hooks/useStocks";
 import { useDebounce } from "../hooks/useDebounce";
 import { useMemo, useState } from "react";
 import PortfolioChart from "../components/PortfolioChart";
-import Header from "../components/Header";
 import SortPanel from "../components/SortPanel";
 
-function Dashboard() {
-  const { error, isLoading, stocks, refetch } = useStocks();
+function Dashboard({ error, isLoading, stocks, refetch, onAdd, onRemove }) {
+  
   const { searchInput, searchResult, handleSearchChange } = useDebounce();
   const [sortBy, setSortBy] = useState("price-high");
 
@@ -51,7 +49,6 @@ function Dashboard() {
   if (error) {
     return (
       <>
-        <Header />
         <div className={styles.box}>
           <div className={styles.rowContainer}>
             <span>{error}</span>
@@ -67,8 +64,6 @@ function Dashboard() {
   const changeClass = avgChange >= 0 ? "profit" : "loss";
   return (
     <>
-      <Header />
-
       <div className={styles.box}>
         {isLoading ? (
           <p>Stocks are Loading...</p>
@@ -83,7 +78,9 @@ function Dashboard() {
                 onChange={(e) => handleSearchChange(e.target.value)}
               />
 
-              <SortPanel sortBy={sortBy} setSortBy={setSortBy} />
+              {sortedStocks.length > 0 && (
+                <SortPanel sortBy={sortBy} setSortBy={setSortBy} />
+              )}
             </div>
             <div className={styles.columnContainer}>
               <div className={styles.summaryCard}>
@@ -101,7 +98,13 @@ function Dashboard() {
             <div className={styles.rowContainer}>
               {sortedStocks.length > 0 ? (
                 sortedStocks.map((stock) => (
-                  <StockCard key={stock.id} {...stock} />
+                  <StockCard
+                    key={stock.id}
+                    stock={stock}
+                    isSelected={true}
+                    onAdd={onAdd}
+                    onRemove={onRemove}
+                  />
                 ))
               ) : (
                 <p style={{ color: "var(--color-text-secondary)" }}>

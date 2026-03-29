@@ -25,5 +25,5 @@ export function useStocks() {
     fetchData();
   }, [fetchData]);
 
-  return { stocks, isLoading, error, refetch: fetchData };
+  return { stocks, isLoading, error, refetch: fetchData ,setStocks };
 }

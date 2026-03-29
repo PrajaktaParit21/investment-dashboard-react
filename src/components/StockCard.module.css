@@ -53,3 +53,22 @@
 .loss {
   color: var(--color-loss);
 }
+.addBtn {
+  margin-top: 6px;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background-color: var(--color-accent);
+  color: white;
+  cursor: pointer;
+}
+
+.removeBtn {
+  margin-top: 6px;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background-color: var(--color-loss);
+  color: white;
+  cursor: pointer;
+}

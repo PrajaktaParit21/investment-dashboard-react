@@ -12,7 +12,7 @@ import styles from "./PortfolioChart.module.css";
 
 function PortfolioChart({ data }) {
   if (!data || data.length === 0) {
-    return <p>No data available</p>;
+    return ;
   }
   return (
     <div className={styles.chartContainer}>

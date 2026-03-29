@@ -1,8 +1,8 @@
 @import "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css";
 @import "https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap";
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 :root {
   /* 🌑 Backgrounds */
@@ -11,8 +11,8 @@
   --color-bg-card: #1e293b;
 
   /* 📝 Text */
-  --color-text-primary: #e2e8f0;
-  --color-text-secondary: #94a3b8;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a8a8b3;
 
   /* 🎯 Accent */
   --color-accent: #3b82f6;
@@ -32,7 +32,7 @@
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
-  --spacing-lg: 24px;
+  --spacing-lg: 20px;
 
   /* 🔘 Radius */
   --radius-sm: 6px;
@@ -44,13 +44,15 @@ body {
   padding: 0;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
-:root{
-    --primary-bg: lavender;
-    --primary-border: rgb(34, 83, 144);
+:root {
+  --primary-bg: lavender;
+  --primary-border: rgb(34, 83, 144);
 }
-
 
 .profit {
   color: var(--color-profit);
@@ -91,4 +93,17 @@ body.light {
   --color-accent: #2563eb;
 
   --color-border: #e2e8f0;
+}
+
+::-webkit-scrollbar {
+  width: 6px; /* width of the entire vertical scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* color of the tracking area */
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 10px;
 }
