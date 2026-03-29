@@ -51,7 +51,7 @@ body {
     sans-serif;
 }
 :root {
-  --primary-bg: lavender;
+  --primary-bg: #1e293b;
   --primary-border: rgb(34, 83, 144);
 }
 
@@ -69,7 +69,7 @@ button {
   background-color: var(--color-accent);
   color: white;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  /* transition: background-color 0.2s ease; */
 }
 
 button:hover {
@@ -94,6 +94,8 @@ body.light {
   --color-accent: #2563eb;
 
   --color-border: #e2e8f0;
+  --primary-bg: lavender;
+
 }
 
 ::-webkit-scrollbar {
