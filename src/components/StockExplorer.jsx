@@ -4,11 +4,11 @@ import styles from "./StockExplorer.module.css";
 import { useGlobals } from "../context/StockContext.jsx";
 
 function StockExplorer() {
-  const { mockStocks } = useGlobals();
+  const { exploreStocks } = useGlobals();
   const loaderRef = useRef(null);
   const isLoadingRef = useRef(false);
   const [visibleCount, setVisibleCount] = useState(10);
-  const visibleStocks = mockStocks.slice(0, visibleCount);
+  const visibleStocks = exploreStocks.slice(0, visibleCount);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,7 +40,7 @@ function StockExplorer() {
     <div className={styles.wrapper}>
       <h2 className={styles.title}>Explore Stocks </h2>
       <span>
-        Visible Stocks: ({visibleStocks.length}/{mockStocks.length}){" "}
+        Visible Stocks: ({visibleStocks.length}/{exploreStocks.length}){" "}
       </span>
 
       <div className={styles.list}>
@@ -48,7 +48,7 @@ function StockExplorer() {
           <StockCard key={stock.id} stock={stock} isSelected={false} />
         ))}
 
-        {visibleCount < mockStocks.length && (
+        {visibleCount < exploreStocks.length && (
           <div ref={loaderRef} className={styles.loader}>
             Loading more stocks...
           </div>

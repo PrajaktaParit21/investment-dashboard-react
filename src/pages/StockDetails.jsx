@@ -7,9 +7,9 @@ function StockDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const {mockStocks, selectedStocks} = useGlobals();
+  const {exploreStocks, selectedStocks} = useGlobals();
 
-  const stock = [...mockStocks,...selectedStocks].find((s) => s.id == id);
+  const stock = [...exploreStocks,...selectedStocks].find((s) => s.id == id);
   if (!stock) {
     return (
       <div className={styles.container}>
